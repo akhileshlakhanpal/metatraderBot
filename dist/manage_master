@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSK Copier</title>
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+    <link rel="stylesheet" href="/static/css/forms.css">
+    <link rel="stylesheet" href="/static/css/content.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>RSK Copier</h2>
+        <ul>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li>
+                <a href="#" class="dropdown-toggle">Accounts Copier</a>
+                <ul class="dropdown">
+                    <li><a href="/manage_slave" style="background-color: #52d825;">Manage Slave</a></li>
+                    <li><a href="/manage_master" style="background-color: #52d825;">Manage Master</a></li>
+                </ul>
+            </li>
+            <li><a href="/groups_copier">Groups Copier</a></li>
+            <li><a href="/servers">Servers</a></li>
+            <li><a href="#">Staff Configurations</a></li>
+            <li><a href="/">Log Out</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+      <div class="table-container">
+        <div class="table-header">
+            <input type="text" class="search-input" placeholder="Search..." />
+            <button class="add-button new-Project">Add Master Account</button>
+        </div>
+        <table class="project-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>MASTER NAME</th>
+                    <th>SERVER NAME</th>
+                    <th>COMPANY NAME</th>
+                    <th>MT5 ACCOUNT</th>
+                    <th>STATUS</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="new-container">
+        <span class="close close-btn-project">&times;</span>
+        <div class="text">Add Master Account</div>
+        <form action="" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="csrfmiddlewaretoken" value="Ivg4tWBabo8KSVVjAsnV1IKwr8CXSOLOhoum9GgqAWGwfYIuG5BzH4LzVUMDj3tx">
+            <div class="form-group">
+                <label>Server:</label>
+                <input type="text" value="SuccedoMarkets-Server" disabled>
+            </div>
+            <div class="form-group">
+                <label>Company Name:</label>
+                <input type="text" value="Succedo Markets" disabled>
+            </div>
+            <div class="form-group">
+                <label>MT5 ID:</label>
+                <input type="text" placeholder="Search MT5 ID">
+            </div>
+            <div class="form-group">
+                <label>Copier Name:</label>
+                <input type="text" placeholder="Enter Copier Name">
+            </div>
+            <div class="form-group">
+                <label>Commission:</label>
+                <input type="number" placeholder="0.00">
+            </div>
+            <div class="form-group">
+                <label>Description:</label>
+                <textarea placeholder="Add a description"></textarea>
+            </div>
+            <div class="form-group">
+                <label><input type="checkbox"> Set Identical Configuration for all slaves</label>
+            </div>
+            <div class="form-group">
+                <label><input type="checkbox"> Inactive</label>
+            </div>
+            <button class="btn-submit">Submit</button>
+        </form>
+     </div>
+
+    <script>
+        // Toggle Dropdown Menu
+        document.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                const parent = this.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function(){
+            $('.new-Project').click(function(){
+              $('.new-container').css('display','block');
+              $('.table-container').addClass('blur-filter');
+            });
+
+            $('.close-btn-project').click(function(){
+                $('.new-container').css('display','none');
+                $('.table-container').removeClass('blur-filter');
+            });
+        });
+
+
+    </script>
+
+</body>
+</html>
