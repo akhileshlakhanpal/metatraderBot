@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/mettraderBot.iml" filepath="$PROJECT_DIR$/.idea/mettraderBot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/metatraderBot.iml" filepath="$PROJECT_DIR$/.idea/metatraderBot.iml" />
     </modules>
   </component>
 </project>
