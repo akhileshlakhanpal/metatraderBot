@@ -31,6 +31,13 @@
         </ul>
     </div>
 
+    <!-- Menu Toggle for mobile -->
+    <div class="menu-toggle" onclick="toggleSidebar()">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+
     <div class="main-content">
       <div class="table-container">
         <div class="table-header">
@@ -144,6 +151,12 @@
         });
 
 
+    </script>
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('hidden');
+        }
     </script>
 
 </body>

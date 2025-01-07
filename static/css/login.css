@@ -16,7 +16,15 @@ body, html {
     height: 100vh;
 }
 
-
+/* Left Panel Styles (Add this to style the left panel if you have one) */
+.left-panel {
+    width: 70%;
+    background-color: #f4f4f4; /* Example background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
 
 /* Right Panel Styles */
 .right-panel {
@@ -79,11 +87,12 @@ body, html {
 @media (max-width: 992px) {
     .container {
         flex-direction: column;
+        height: auto; /* Allow the height to adjust based on content */
     }
 
     .left-panel, .right-panel {
         width: 100%;
-        height: 50vh;
+        height: auto; /* Let both panels adjust based on content height */
     }
 
     .right-panel {
