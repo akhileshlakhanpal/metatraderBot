@@ -27,10 +27,10 @@
     </div>
 
     <!-- Menu Toggle for mobile -->
-    <div class="menu-toggle" onclick="toggleSidebar()">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+    <div class="menu-toggle">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
     </div>
 
 
@@ -174,11 +174,16 @@
         });
     </script>
     <script>
-        function toggleSidebar() {
-            var sidebar = document.querySelector('.sidebar');
-            sidebar.classList.toggle('hidden');
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const sidebar = document.querySelector('.sidebar');
+
+            menuToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('hidden');
+            });
+        });
     </script>
+
 
 
 </body>

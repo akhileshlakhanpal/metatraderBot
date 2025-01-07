@@ -1,3 +1,4 @@
+/* Reset some default styles */
 * {
     margin: 0;
     padding: 0;
@@ -10,7 +11,6 @@ body {
     color: #003366;
 }
 
-/* Sidebar */
 .sidebar {
     width: 250px;
     background-color: #003366;
@@ -50,7 +50,7 @@ body {
     background-color: #00509e;
 }
 
-/* Dropdown Menu */
+/* Dropdown Menu Styles */
 .sidebar ul li .dropdown {
     list-style: none;
     padding-left: 15px;
@@ -77,7 +77,6 @@ body {
     display: block;
 }
 
-/* Menu toggle button for mobile */
 .menu-toggle {
     display: none; /* Hide by default */
     cursor: pointer;
@@ -96,10 +95,52 @@ body {
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Main content */
 .main-content {
     margin-left: 250px;
     padding: 20px;
+}
+
+.card {
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    margin: 0 0 10px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.chart {
+    height: 200px;
+    background: linear-gradient(90deg, #00509e, #003366);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 20px;
+    margin: 10px 0;
+}
+
+.progress-bar .progress {
+    background-color: #00509e;
+    height: 100%;
+    width: 70%;
 }
 
 /* Mobile view adjustments */

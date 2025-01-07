@@ -32,7 +32,7 @@
     </div>
 
     <!-- Menu Toggle for mobile -->
-    <div class="menu-toggle" onclick="toggleSidebar()">
+    <div class="menu-toggle">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
@@ -144,10 +144,14 @@
 
     </script>
     <script>
-        function toggleSidebar() {
-            var sidebar = document.querySelector('.sidebar');
-            sidebar.classList.toggle('hidden');
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const sidebar = document.querySelector('.sidebar');
+
+            menuToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('hidden');
+            });
+        });
     </script>
 
 </body>
