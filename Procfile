@@ -1,2 +1,2 @@
-gunicorn metatraderBot.wsgi:application
+web: gunicorn metatraderBot.wsgi:application
 
