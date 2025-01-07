@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "tool.apps.ToolConfig",
     'django_distill',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -39,9 +40,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+MIDDLEWARE.insert(0, 'corsheaders.middleware.CorsMiddleware')
 ROOT_URLCONF = 'metatraderBot.urls'
-
+CORS_ALLOWED_ORIGINS = [
+    'https://rskcopier.netlify.app',
+]
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

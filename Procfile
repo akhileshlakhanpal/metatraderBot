@@ -1,1 +1,1 @@
-web: gunicorn metatraderBogit initt.wsgi:application
+web: gunicorn metatraderBot.wsgi:application
