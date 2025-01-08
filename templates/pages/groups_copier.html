@@ -156,14 +156,14 @@
 
     </script>
    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
+        // JS to toggle sidebar visibility
+        document.querySelector('.menu-toggle').addEventListener('click', function () {
             const sidebar = document.querySelector('.sidebar');
-
-            menuToggle.addEventListener('click', function() {
-                sidebar.classList.toggle('hidden');
-            });
+            const mainContent = document.querySelector('.main-content');
+            sidebar.classList.toggle('active');
+            mainContent.classList.toggle('active');
         });
+
     </script>
 
 

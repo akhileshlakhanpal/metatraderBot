@@ -180,13 +180,6 @@
             sidebar.classList.toggle('active');
             mainContent.classList.toggle('active');
         });
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.dropdown-toggle')) {
-                document.querySelectorAll('.dropdown').forEach((dropdown) => {
-                    dropdown.style.display = 'none';
-                });
-            }
-        });
 
     </script>
 
