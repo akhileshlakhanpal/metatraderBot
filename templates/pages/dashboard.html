@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 </head>
 <body>
+    <div class="menu-toggle">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
     <div class="sidebar">
         <h2>RSK Copier</h2>
         <ul>
@@ -26,12 +31,6 @@
         </ul>
     </div>
 
-    <!-- Menu Toggle for mobile -->
-    <div class="menu-toggle">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-    </div>
 
 
     <div class="main-content">
@@ -174,14 +173,21 @@
         });
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
+        // JS to toggle sidebar visibility
+        document.querySelector('.menu-toggle').addEventListener('click', function () {
             const sidebar = document.querySelector('.sidebar');
-
-            menuToggle.addEventListener('click', function() {
-                sidebar.classList.toggle('hidden');
-            });
+            const mainContent = document.querySelector('.main-content');
+            sidebar.classList.toggle('active');
+            mainContent.classList.toggle('active');
         });
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown-toggle')) {
+                document.querySelectorAll('.dropdown').forEach((dropdown) => {
+                    dropdown.style.display = 'none';
+                });
+            }
+        });
+
     </script>
 
 

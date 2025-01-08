@@ -11,15 +11,25 @@ body {
     color: #003366;
 }
 
+/* Sidebar Styles */
 .sidebar {
     width: 250px;
     background-color: #003366;
+    background: linear-gradient(180deg, #003366 0%, #00509e 100%);
     color: white;
     height: 100vh;
     padding: 20px;
     box-sizing: border-box;
     position: fixed;
+    top: 0;
+    left: 0;
     transition: transform 0.3s ease;
+    transform: translateX(0); /* Visible by default */
+    z-index: 999; /* Ensure it's above other elements */
+}
+
+.sidebar.active {
+    transform: translateX(0); /* Show sidebar */
 }
 
 .sidebar h2 {
@@ -77,8 +87,9 @@ body {
     display: block;
 }
 
+/* Menu Toggle Button */
 .menu-toggle {
-    display: none; /* Hide by default */
+    display: none; /* Hidden by default */
     cursor: pointer;
     position: fixed;
     top: 20px;
@@ -91,13 +102,32 @@ body {
     width: 25px;
     height: 3px;
     background-color: #333;
-    margin: 5px auto;
+    margin: 5px 0;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+/* Transform the menu button when active (optional) */
+.menu-toggle.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Main Content Styles */
 .main-content {
-    margin-left: 250px;
+    margin-left: 250px; /* Space for sidebar */
     padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+.main-content.active {
+    margin-left: 0; /* Full width when sidebar is active on small screens */
 }
 
 .card {
@@ -106,6 +136,11 @@ body {
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
+    transition: padding 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 .card h3 {
@@ -114,9 +149,11 @@ body {
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px; /* Add spacing between grid items */
+    transition: grid-template-columns 0.3s ease;
 }
+
 
 .chart {
     height: 200px;
@@ -130,113 +167,101 @@ body {
 }
 
 .progress-bar {
+    width: 100%;
+    height: 10px;
     background-color: #e0e0e0;
     border-radius: 5px;
     overflow: hidden;
-    height: 20px;
-    margin: 10px 0;
 }
-
-.progress-bar .progress {
-    background-color: #00509e;
+.progress {
     height: 100%;
-    width: 70%;
+    width: 0; /* Start with 0 */
+    background-color: #52d825;
+    animation: fill-progress 2s forwards; /* Smooth animation */
 }
 
-/* Mobile view adjustments */
+@keyframes fill-progress {
+    to {
+        width: 70%; /* Adjust according to your progress percentage */
+    }
+}
+
+
+/* Responsive Styles */
+
+/* Tablets and below */
 @media (max-width: 1024px) {
     .sidebar {
-        width: 250px;
-        padding: 15px;
+        transform: translateX(-250px); /* Hide sidebar by default */
+    }
+
+    .sidebar.active {
+        transform: translateX(0); /* Show sidebar when active */
     }
 
     .main-content {
-        margin-left: 250px;
+        margin-left: 0; /* Remove left margin */
+    }
+
+    .menu-toggle {
+        display: block; /* Show menu toggle */
     }
 
     .grid-container {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
 
+    .card {
+        padding: 15px; /* Reduce card padding */
+    }
+}
+
+/* Mobile Devices */
+@media screen and (max-width: 768px) {
     .menu-toggle {
         display: block;
     }
-
-    .sidebar.hidden {
-        transform: translateX(-250px); /* Hide sidebar */
-    }
-
-    .new-container {
-        width: 70%;
-    }
-}
-
-@media (max-width: 768px) {
     .sidebar {
-        width: 250px;
-        height: auto;
-        position: absolute;
-        top: 0;
-        left: -250px; /* Initially hidden */
-        padding: 15px;
+        transform: translateX(-100%); /* Hide sidebar */
     }
-
+    .sidebar.active {
+        transform: translateX(0); /* Show sidebar */
+    }
     .main-content {
         margin-left: 0;
     }
-
-    .sidebar.hidden {
-        transform: translateX(0); /* Show sidebar */
-    }
-
-    .grid-container {
-        grid-template-columns: 1fr;
-    }
-
-    .table-container {
-        margin: 10px;
-    }
-
-    .search-input {
-        width: 150px;
-    }
-
-    .add-button {
-        font-size: 12px;
-        padding: 5px 10px;
-    }
-
-    .new-container {
-        width: 90%;
-        padding: 30px;
-    }
-
-    .new-container .text {
-        font-size: 24px;
-    }
 }
 
-/* For very small screens */
+/* Very Small Screens */
 @media (max-width: 480px) {
-    .table-container {
-        margin: 5px;
+    .card {
+        padding: 8px; /* Minimal padding for compact spacing */
+        margin: 8px; /* Ensure cards don't stick together */
+        border-radius: 5px; /* Slightly rounded corners for modern look */
+        box-shadow: none; /* Simplify shadows for smaller screens */
     }
 
-    .search-input {
-        width: 120px;
+    .chart {
+        font-size: 0.8rem; /* Adjusted font size for better readability */
+        height: 150px; /* Maintain compact height */
+        margin-bottom: 12px; /* Add spacing between charts */
     }
 
-    .add-button {
-        font-size: 12px;
-        padding: 5px;
+    .btn {
+        padding: 6px 12px; /* Smaller buttons for limited space */
+        font-size: 0.85rem; /* Slightly smaller text */
     }
 
-    .new-container {
-        width: 100%;
-        padding: 20px;
+    .text {
+        font-size: 0.9rem; /* Compact text size for smaller screens */
+        line-height: 1.3; /* Improve text spacing for readability */
     }
 
-    .new-container .text {
-        font-size: 20px;
+    .header {
+        font-size: 1.2rem; /* Reduce header size */
+        text-align: center; /* Center align header for better layout */
     }
+
+
 }
+
