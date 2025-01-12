@@ -67,8 +67,8 @@
                     <td>{{ l.status }}</td>
                     <td>
                         <a href="#" class="run-button tooltip">
-                            <img src="{% static 'images/run.svg' %}" alt="Run">
-                            <span class="tooltiptext">Run</span>
+                            <img src="{% static 'images/edit.png' %}" alt="Run">
+                            <span class="tooltiptext">Edit</span>
                         </a>
                     </td>
                 </tr>
@@ -84,15 +84,15 @@
             {% csrf_token %}
             <div class="form-group">
                 <label>Company Name:</label>
-                <input type="text" value="">
+                <input type="text" name="company_name" value="">
             </div>
             <div class="form-group">
                 <label>Server Name:</label>
-                <input type="text" value="">
+                <input type="text" name="serer_name" value="">
             </div>
             <div class="form-group">
                 <label>Api Url:</label>
-                <input type="text" value="">
+                <input type="text" name="api_url" value="">
             </div>
             <div class="form-group">
                 <label>Server Type:</label>
@@ -100,28 +100,27 @@
             </div>
             <div class="form-group">
                 <label>Server IP:</label>
-                <input type="text" value="" >
+                <input type="text" name="server_ip" value="" >
             </div>
             <div class="form-group">
-                <label>Server Port:</label>
-                <input type="text" placeholder="">
+                <label>Server ID:</label>
+                <input type="text" name="server_id" placeholder="">
             </div>
             <div class="form-group">
-                <label>Manager ID</label>
-                <input type="number" placeholder="">
+                <label>Server Password</label>
+                <input type="text" name="password" placeholder="">
             </div>
             <div class="form-group">
                 <label>Status:</label>
-                <select>
+                <select name="status">
                     <option value="1">Active</option>
                     <option value="2">Closed</option>
                 </select>
             </div>
             <div class="form-group">
                 <label>Description</label>
-                <input type="text" placeholder="">
+                <input type="text" name="description" placeholder="">
             </div>
-
             <button class="btn-submit">Submit</button>
         </form>
      </div>

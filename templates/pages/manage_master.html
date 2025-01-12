@@ -60,15 +60,15 @@
                 {% for l in data %}
                 <tr>
                     <td>{{ l.id }}</td>
-                    <td>{{ l.master_account }}</td>
-                    <td>{{ l.server_name }}</td>
-                    <td>{{ l.company_name }}</td>
-                    <td>{{ l.mt5_account }}</td>
+                    <td>{{ l.name }}</td>
+                    <td>{{ l.server_id__server_name }}</td>
+                    <td>{{ l.server_id__company_name }}</td>
+                    <td>{{ l.mt5_id }}</td>
                     <td>{{ l.status }}</td>
                     <td>
                         <a href="#" class="run-button tooltip">
-                            <img src="{% static 'images/run.svg' %}" alt="Run">
-                            <span class="tooltiptext">Run</span>
+                            <img src="{% static 'images/edit.png' %}" alt="Run">
+                            <span class="tooltiptext">Edit</span>
                         </a>
                     </td>
                 </tr>
@@ -84,35 +84,39 @@
             {% csrf_token %}
             <div class="form-group">
                 <label>Server:</label>
-                <input type="text" value="SuccedoMarkets-Server" disabled>
+                <input type="text" value="SuccedoMarkets-Server">
             </div>
             <div class="form-group">
                 <label>Company Name:</label>
-                <input type="text" value="Succedo Markets" disabled>
+                <input type="text" value="Succedo Markets">
             </div>
             <div class="form-group">
                 <label>MT5 ID:</label>
-                <input type="text" placeholder="Search MT5 ID">
+                <input type="text" name="mt5_id" placeholder="Search MT5 ID">
             </div>
             <div class="form-group">
-                <label>Copier Name:</label>
-                <input type="text" placeholder="Enter Copier Name">
+                <label>Master Name:</label>
+                <input type="text" name="name" placeholder="Enter Name">
+            </div>
+            <div class="form-group">
+                <label>Account Password:</label>
+                <input type="text" name="password" placeholder="Enter Password">
             </div>
             <div class="form-group">
                 <label>Commission:</label>
-                <input type="number" placeholder="0.00">
+                <input type="number" name="commission"  placeholder="0.00">
             </div>
             <div class="form-group">
                 <label>Description:</label>
-                <textarea placeholder="Add a description"></textarea>
+                <textarea placeholder="Add a description" name="description"></textarea>
             </div>
             <div class="form-group">
-                <label><input type="checkbox"> Set Identical Configuration for all slaves</label>
+                <label><input type="checkbox" name="identical"> Set Identical Configuration for all slaves</label>
             </div>
             <div class="form-group">
-                <label><input type="checkbox"> Inactive</label>
+                <label><input type="checkbox" name="status"> Status</label>
             </div>
-            <button class="btn-submit">Submit</button>
+            <button type="submit" class="btn-submit">Submit</button>
         </form>
      </div>
 

@@ -49,8 +49,7 @@
                 <tr>
                     <th>ID</th>
                     <th>SLAVE ACCOUNT</th>
-                    <th>STRATEGY</th>
-                    <th>VALUE</th>
+                    <th>MT5 ID</th>
                     <th>COMMISSION</th>
                     <th>STATUS</th>
                     <th>Action</th>
@@ -60,15 +59,14 @@
                 {% for l in data %}
                 <tr>
                     <td>{{ l.id }}</td>
-                    <td>{{ l.slave_account }}</td>
-                    <td>{{ l.strategy }}</td>
-                    <td>{{ l.value }}</td>
+                    <td>{{ l.name }}</td>
+                    <td>{{ l.mt5_id }}</td>
                     <td>{{ l.commission }}</td>
                     <td>{{ l.status }}</td>
                     <td>
                         <a href="#" class="run-button tooltip">
-                            <img src="{% static 'images/run.svg' %}" alt="Run">
-                            <span class="tooltiptext">Run</span>
+                            <img src="{% static 'images/edit.png' %}" alt="Run">
+                            <span class="tooltiptext">Edit</span>
                         </a>
                     </td>
                 </tr>
@@ -84,11 +82,12 @@
             {% csrf_token %}
             <div class="form-group">
                 <label>Master Name:</label>
-                <input type="text" value="TEST MASTER" disabled>
-            </div>
-            <div class="form-group">
-                <label>MT5 Account:</label>
-                <input type="text" value="999986" disabled>
+                <select name="master_account">
+                    <option value="-1">Select Master Account</option>
+                    {% for l in masters %}
+                        <option value="{{l.id}}">{{l.name}}</option>
+                    {% endfor %}
+                </select>
             </div>
             <div class="form-group">
                 <label>Company:</label>
@@ -100,15 +99,23 @@
             </div>
             <div class="form-group">
                 <label>Slave MT5 ID:</label>
-                <input type="text" placeholder="Search MT5 ID">
+                <input type="text" name="mt5_id">
+            </div>
+            <div class="form-group">
+                <label>Slave Name:</label>
+                <input type="text" name="name">
+            </div>
+            <div class="form-group">
+                <label>Account Password:</label>
+                <input type="text" name="password">
             </div>
             <div class="form-group">
                 <label>Commission (%):</label>
-                <input type="number" placeholder="0.00">
+                <input type="number" name="commission" placeholder="0.00">
             </div>
             <div class="form-group">
                 <label>Risk Approach:</label>
-                <select>
+                <select name="risk">
                     <option value="low">Low</option>
                     <option value="medium">Medium</option>
                     <option value="high">High</option>
@@ -116,12 +123,12 @@
             </div>
             <div class="advanced-settings">
                 <h3>Advanced Settings</h3>
-                <label><input type="checkbox"> Copy Stop Loss</label>
-                <label><input type="checkbox"> Copy Take Profit</label>
-                <label><input type="checkbox"> Reverse Trade</label>
+                <label><input type="checkbox" name="stop_loss"> Copy Stop Loss</label>
+                <label><input type="checkbox" name="take_profit"> Copy Take Profit</label>
+                <label><input type="checkbox" name="reverse_trade"> Reverse Trade</label>
             </div>
             <div class="form-group">
-                <label><input type="checkbox" checked> Active</label>
+                <label><input type="checkbox" name="status" checked> Active</label>
             </div>
             <button class="btn-submit">Submit</button>
         </form>
